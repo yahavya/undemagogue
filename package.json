@@ -20,6 +20,7 @@
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
-    "globals": "^15.3.0"
+    "globals": "^15.3.0",
+    "react-router-dom": "^6.23.1"
   }
 }
