@@ -9,8 +9,9 @@ export default function Home() {
 
   // Using the Fetch API to make a basic API call from the client
 
-  fetch('https://helloworld-es5dg2hjaa-uc.a.run.app', {
+  fetch('https://getdemagogue-es5dg2hjaa-uc.a.run.app',  {
     method: 'GET',
+    mode: 'no-cors'
   })
   .then(response => response.text())
   .then(data => console.log(data))

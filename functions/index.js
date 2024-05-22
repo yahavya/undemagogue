@@ -7,17 +7,24 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const {onRequest} = require("firebase-functions/v2/https");
+const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
+const cors = require('cors');
 
-// Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
- exports.helloWorld = onRequest((request, response) => {
+const express = require("express");
+const app = express();
+
+app.use(cors({origin: true}));
+
+app.get("/", (request, response) => {
   logger.info("Hello logs!", {structuredData: true});
-   response.send(JSON.stringify(
-    {"demagogues": 
-    [{"handle": "@bot1", "hate_score": 69, "fake_score": 100},
-    {"handle": "@bot2", "hate_score": 42, "fake_score": 35}]
-    }))
- });
+    response.send(JSON.stringify(
+        {"demagogues": 
+        [{"handle": "@bot1", "hate_score": 69, "fake_score": 100},
+        {"handle": "@bot2", "hate_score": 42, "fake_score": 35}]
+        }))
+    });
+
+ exports.getDemagogue = onRequest(app);
