@@ -3,9 +3,11 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "lint": ".\\node_modules\\eslint\\lib\\eslint\\eslint.js"
   },
   "dependencies": {
+    "lint": "^0.8.19",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
