@@ -13,7 +13,11 @@ const logger = require("firebase-functions/logger");
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+ exports.helloWorld = onRequest((request, response) => {
+  logger.info("Hello logs!", {structuredData: true});
+   response.send(JSON.stringify(
+    {"demagogues": 
+    [{"handle": "@bot1", "hate_score": 69, "fake_score": 100},
+    {"handle": "@bot2", "hate_score": 42, "fake_score": 35}]
+    }))
+ });
