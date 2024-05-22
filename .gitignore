@@ -29,3 +29,4 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .firebase/simplemap-d3ec4
+.firebase

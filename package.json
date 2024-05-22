@@ -4,7 +4,7 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "lint": ".\\node_modules\\eslint\\lib\\eslint\\eslint.js"
+    "lint": ""
   },
   "dependencies": {
     "lint": "^0.8.19",
