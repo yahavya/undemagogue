@@ -14,13 +14,16 @@ app.use(express.json());
 //Routes
 //Get
 
-app.get("/api/test", async (req, res) => {
-    try {
-    
-    // Extract data from documents
-    const listings = "this is the first succesful response";
+app.get("/api/getDemagogues", async (req, res) => {
 
-    res.json({ success: true, listings });
+    try {
+    const twitterHandle = req.query.twitterHandle || "";
+    console.log(twitterHandle);
+
+    // Extract data from documents
+    //const listings = "this is the first succesful response";
+
+    res.json({ success: true, twitterHandle: twitterHandle });
 
   } catch (error) {
     console.error('Error fetching entries from Firestore:', error);
