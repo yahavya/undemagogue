@@ -1,30 +1,34 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * const {onCall} = require("firebase-functions/v2/https");
- * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
-
-const { onRequest } = require("firebase-functions/v2/https");
+// const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-const cors = require('cors');
+const admin = require("firebase-admin");
+//var serviceAccount = require("./permissions.json");
 
-// https://firebase.google.com/docs/functions/get-started
-
+const functions = require("firebase-functions");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
-app.use(cors({origin: true}));
+app.use(cors( {origin: true}));
+app.use(express.json());
 
-app.get("/", (request, response) => {
-  logger.info("Hello logs!", {structuredData: true});
-    response.send(JSON.stringify(
-        {"demagogues": 
-        [{"handle": "@bot1", "hate_score": 69, "fake_score": 100},
-        {"handle": "@bot2", "hate_score": 42, "fake_score": 35}]
-        }))
-    });
+//Routes
+//Get
 
- exports.getDemagogue = onRequest(app);
+app.get("/api/test", async (req, res) => {
+    try {
+    
+    // Extract data from documents
+    const listings = "this is the first succesful response";
+
+    res.json({ success: true, listings });
+
+  } catch (error) {
+    console.error('Error fetching entries from Firestore:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+
+  }
+
+});
+
+exports.app = functions.https.onRequest(app);
+
