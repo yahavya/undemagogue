@@ -8,35 +8,66 @@ const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const axios = require('axios');
+const request = require('request');
+
 
 app.use(cors({ origin: true }));
 app.use(express.json());
 
 //Routes
+function requestAsync(options) {
+  return new Promise((resolve, reject) => {
+    request(options, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve({ response, body });
+    });
+  });
+}
 
 async function getChatGPTResponse(prompt) {
   try {
-    const apiKey = defineSecret('CHATGPT_API_KEY');
-    const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
-      {
-        model: 'gpt-3.5-turbo',
-        messages: [
-          { role: 'system', content: 'You are a helpful assistant.' },
-          { role: 'user', content: message },
-        ],
+    let apiKey = defineSecret('CHATGPT_API_KEY');
+    apiKey = apiKey.value().toString();
+    var options = {
+      'method': 'POST',
+      'url': 'https://api.openai.com/v1/chat/completions',
+      'headers': {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
       },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey.value().toString()}`,
-        },
-      }
-    )
+      body: JSON.stringify({
+        "model": "gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Who won the world series in 2020?"
+          },
+          {
+            "role": "assistant",
+            "content": "The Los Angeles Dodgers won the World Series in 2020."
+          },
+          {
+            "role": "user",
+            "content": "Where was it played?"
+          }
+        ],
+        "temperature": 1,
+        "top_p": 1,
+        "n": 1,
+        "stream": false,
+        "max_tokens": 250,
+        "presence_penalty": 0,
+        "frequency_penalty": 0
+      })
 
-    const text = response.data.choices[0].text.trim();
-    return text;
+    };
+
+    const { response, body } = await requestAsync(options);
+    return body
+
   } catch (error) {
     return error.toString();
   }
@@ -48,14 +79,14 @@ app.get("/api/getDemagogues", async (req, res) => {
     const twitterHandle = req.query.twitterHandle || "";
     console.log(twitterHandle);
 
+
     // Extract data from documents
     //const listings = "this is the first succesful response";
-    res.json({ success: true, twitterHandle: await getChatGPTResponse("What's 5 * 9? why?") });
-
+    const data = await getChatGPTResponse("What's 5 * 9? why?");
+    res.json({ success: true, data: data });
   } catch (error) {
     console.error('Error fetching entries from Firestore:', error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
-
   }
 
 });
