@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import React, { useState } from'react';
 import {TailSpin} from "react-loader-spinner";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
+import { Table, Tooltip, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
 export default function Home() {
 
   const [data, setData] = useState([]);
@@ -84,7 +84,11 @@ const demagogueData = [ //temporary, replace with actual data, sort
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Hate Score</TableCell>
+                <TableCell>Hate Score
+                  <Tooltip title="Hate score represents the level of hate or dislike towards a person or a topic.">
+                        <span style={{ marginLeft: 5, cursor: 'pointer', fontSize: '12px', color: 'teal', borderRadius: '50%', padding: '2px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: '1px solid white' }}>?</span>
+                      </Tooltip>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
