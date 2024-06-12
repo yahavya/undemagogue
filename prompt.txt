@@ -1,0 +1,27 @@
+Rate these tweets based on their usage of hate speech. 
+
+Rate every tweet from 1 to 10 and add an explanation, and re-order the tweets from the top score to the bottom, and give a general averaged score and add an explanation, and return the result as a json, using this structure:
+ 
+{
+    "handle": String,
+    "name": String,
+    "hate_score": integer,
+    "top_rated_tweets": [<content_of_tweet_1>, <content_of_tweet_2>, <content_of_tweet_3>]
+ }
+
+1.	To all of those who have asked, I will not be going to the Inauguration on January 20th.
+2.	The 75,000,000 great American Patriots who voted for me, AMERICA FIRST, and MAKE AMERICA GREAT AGAIN, will have a GIANT VOICE long into the future. They will not be disrespected or treated unfairly in any way, shape or form!!!
+3.	I am asking for everyone at the U.S. Capitol to remain peaceful. No violence! Remember, WE are the Party of Law & Order – respect the Law and our great men and women in Blue. Thank you!
+4.	Please support our Capitol Police and Law Enforcement. They are truly on the side of our Country. Stay peaceful!
+5.	These scoundrels are only toying with the @sendavidperdue (a great guy) vote. Just didn’t want to announce quite yet. They’ve got as many ballots as are necessary. Rigged Election!
+6.	Even Mexico uses Voter I.D.
+7.	The States want to redo their votes. They found out they voted on a FRAUD. Legislatures never approved. Let them do it. BE STRONG!
+8.	They just happened to find 50,000 ballots late last night. The USA is embarrassed by fools. Our Election Process is worse than that of third world countries!
+9.	THE REPUBLICAN PARTY AND, MORE IMPORTANTLY, OUR COUNTRY, NEEDS THE PRESIDENCY MORE THAN EVER BEFORE - THE POWER OF THE VETO. STAY STRONG!
+10.	States want to correct their votes, which they now know were based on irregularities and fraud, plus corrupt process never received legislative approval. All Mike Pence has to do is send them back to the States, AND WE WIN. Do it Mike, this is a time for extreme courage!
+11.	Sleepy Eyes Chuck Todd is so happy with the fake voter tabulation process that he can’t even get the words out straight. Sad to watch!
+12.	If Vice President @Mike_Pence comes through for us, we will win the Presidency. Many States want to decertify the mistake they made in certifying incorrect & even fraudulent numbers in a process NOT approved by their State Legislatures (which it must be). Mike can send it back!
+13.	Get smart Republicans. FIGHT!
+14.	Just happened to have found another 4000 ballots from Fulton County. Here we go!
+15.	Looks like they are setting up a big “voter dump” against the Republican candidates. Waiting to see how many votes they need?
+16.	hope the Democrats, and even more importantly, the weak and ineffective RINO section of the Republican Party, are looking at the thousands of people pouring into D.C. They won’t stand for a landslide election victory to be stolen. @senatemajldr @JohnCornyn @SenJohnThune
