@@ -3,23 +3,22 @@ import styles from '../styles/Home.module.css';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography } from '@mui/material';
 export default function Home() {
 
-   const saveInput = () => {
+  const saveInput = () => {
     return document.getElementById("twitterHandle").value;
   }
 
   const handleSubmit = (event) => {
     const twitterHandle = saveInput();
     event.preventDefault();
-  
-  // Using the Fetch API to make a basic API call from the client
 
-  fetch(`https://us-central1-simplemap-d3ec4.cloudfunctions.net/app/api/getDemagogues/?twitterHandle=${twitterHandle}`,  {
-    method: 'GET'
-  })
-  .then(response => response.json())
-  .then(dataRes => console.log(dataRes))
-  .catch(error => console.error('Error:', error));
+    // Using the Fetch API to make a basic API call from the client
 
+    fetch(`https://us-central1-simplemap-d3ec4.cloudfunctions.net/app/api/getDemagogues/?twitterHandle=${twitterHandle}`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
   };
 
   const handleUnfollow = (url) => {
