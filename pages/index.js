@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
 export default function Home() {
 
   const saveInput = () => {
@@ -28,21 +28,30 @@ export default function Home() {
 
 const data = [ //temporary, replace with actual data, sort
     { name: "Ben Gvir", hate_score: 85, url: "https://twitter.com/itamarbengvir" },
-    { name: "Ben Caspit", hate_score: 59, url: "https://twitter.com/itamarbengvir" },
-    { name: "Bibi", hate_score: 26, url: "https://twitter.com/itamarbengvir" },
+    { name: "Ben Caspit", hate_score: 59, url: "https://twitter.com/BenCaspit" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
 ]
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>undemagogue (WIP)</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+       <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Undemagogue 
+          </Typography>
+          {/* Add more navigation items here */}
+        </Toolbar>
+      </AppBar>
 
       <main style={{position: 'elative', height: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h1" component="h1" className={styles.title}>Welcome to undemagogue</Typography>
 
         <form onSubmit={handleSubmit} style={{marginTop: '20px', justifyContent: 'center', alignItems: 'center'}}>
-          <input type="text" id="twitterHandle" placeholder="Enter your text" />
+          <Input type="text" id="twitterHandle" placeholder="Enter your text" />
           <Button type="submit">Submit</Button>
         </form>
 
@@ -59,7 +68,7 @@ const data = [ //temporary, replace with actual data, sort
                 <TableRow key={index}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.hate_score}</TableCell>
-                  <TableCell><Button type="button" onClick={()=> handleUnfollow(item.link)}>Unfollow</Button></TableCell>
+                  <TableCell><Button type="button" onClick={()=> handleUnfollow(item.url)}>Unfollow</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>
