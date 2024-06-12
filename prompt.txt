@@ -1,9 +1,8 @@
 Rate these tweets based on their usage of hate speech. 
 
-Rate every tweet from 1 to 10 and add an explanation, and re-order the tweets from the top score to the bottom, and give a general averaged score and add an explanation, and return the result as a json, using this structure:
+Rate every tweet from 1 to 10, and re-order the tweets from the top score to the bottom, and return the result as a json, using this structure:
  
 {
-    "handle": String,
     "name": String,
     "hate_score": integer,
     "top_rated_tweets": [<content_of_tweet_1>, <content_of_tweet_2>, <content_of_tweet_3>]
