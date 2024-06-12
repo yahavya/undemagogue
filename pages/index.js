@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import React, { useState } from'react';
+import {TailSpin} from "react-loader-spinner";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
 export default function Home() {
+
+  const [data, setData] = useState([]);
+  const [showTable, setShowTable] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+
 
   const saveInput = () => {
     return document.getElementById("twitterHandle").value;
@@ -10,6 +17,8 @@ export default function Home() {
   const handleSubmit = (event) => {
     const twitterHandle = saveInput();
     event.preventDefault();
+    setLoading(true);
+
 
     // Using the Fetch API to make a basic API call from the client
 
@@ -17,16 +26,24 @@ export default function Home() {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
+      .then(data => {
+        setData(data);
+        setShowTable(true);
+        setLoading(false);
+      })
+      .catch(error => {
+       console.error('Error:', error);
+       setLoading(false);
+     });
   };
+
 
   const handleUnfollow = (url) => {
     window.open(url, '_blank');
   };
 
 
-const data = [ //temporary, replace with actual data, sort
+const demagogueData = [ //temporary, replace with actual data, sort
     { name: "Ben Gvir", hate_score: 85, url: "https://twitter.com/itamarbengvir" },
     { name: "Ben Caspit", hate_score: 59, url: "https://twitter.com/BenCaspit" },
     { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
@@ -55,6 +72,13 @@ const data = [ //temporary, replace with actual data, sort
           <Button type="submit">Submit</Button>
         </form>
 
+  
+      {isLoading ? (
+        <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+            <TailSpin type="Loader" color="#00BFFF" height={80} width={80} />
+            </div> 
+      ) : (
+        showTable && (
        <TableContainer>
           <Table>
             <TableHead>
@@ -64,7 +88,7 @@ const data = [ //temporary, replace with actual data, sort
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((item, index) => (
+              {demagogueData.map((item, index) => (
                 <TableRow key={index}>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>{item.hate_score}</TableCell>
@@ -73,7 +97,8 @@ const data = [ //temporary, replace with actual data, sort
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer>)
+      )}
 
       </main>
 
