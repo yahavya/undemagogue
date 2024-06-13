@@ -38,11 +38,9 @@ export default function Home() {
      });
   };
 
-
   const handleUnfollow = (url) => {
     window.open(url, '_blank');
   };
-
 
 const demagogueData = [ //temporary, replace with actual data, sort
     { name: "Ben Gvir", hate_score: 85, url: "https://twitter.com/itamarbengvir" },
@@ -72,7 +70,7 @@ const demagogueData = [ //temporary, replace with actual data, sort
         <Typography variant="h1" component="h1" className={styles.title}>Welcome to undemagogue</Typography>
 
         <form onSubmit={handleSubmit} style={{marginTop: '20px', justifyContent: 'center', alignItems: 'center'}}>
-          <Input type="text" id="twitterHandle" placeholder="Enter your text" />
+          <Input type="text" id="twitterHandle" placeholder="Enter your twitter handle" />
           <Button type="submit">Submit</Button>
         </form>
 
