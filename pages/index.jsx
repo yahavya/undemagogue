@@ -28,9 +28,9 @@ export default function Home() {
     })
       .then(response => response.json())
       .then(responseData => {
-        setData(data); //not sure what data we should set here, revisit
         const parsedData = JSON.parse(responseData.data);
         const { choices } = parsedData;
+        setData(parsedData); //not sure what data we should set here, revisit
         console.log(choices[0].message);
         setShowTable(true);
         setLoading(false);
@@ -40,6 +40,8 @@ export default function Home() {
        setLoading(false);
      });
   };
+
+  console.log("this is accessing data from outside: " + data.choices[0].message.content);
 
   const handleUnfollow = (url) => {
     window.open(url, '_blank');
