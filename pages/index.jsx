@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import React, { useState } from'react';
 import {TailSpin} from "react-loader-spinner";
 import { Table, Tooltip, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
+import Link from 'next/link'
 export default function Home() {
 
   const [data, setData] = useState([]);
@@ -60,6 +61,9 @@ const demagogueData = [ //temporary, replace with actual data, sort
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Undemagogue 
           </Typography>
+          <Link href="/about" passHref>
+            <Button color="inherit">About Us</Button>            
+            </Link>
           {/* Add more navigation items here */}
         </Toolbar>
       </AppBar>
