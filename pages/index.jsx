@@ -27,8 +27,11 @@ export default function Home() {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(data => {
-        setData(data);
+      .then(responseData => {
+        setData(data); //not sure what data we should set here, revisit
+        const parsedData = JSON.parse(responseData.data);
+        const { choices } = parsedData;
+        console.log(choices[0].message);
         setShowTable(true);
         setLoading(false);
       })
