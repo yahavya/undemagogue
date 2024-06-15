@@ -52,6 +52,13 @@ const demagogueData = [ //temporary, replace with actual data, sort
     { name: "Ben Gvir", hate_score: 85, url: "https://twitter.com/itamarbengvir" },
     { name: "Ben Caspit", hate_score: 59, url: "https://twitter.com/BenCaspit" },
     { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
+    { name: "Bibi", hate_score: 26, url: "https://twitter.com/netanyahu" },
 ]
   return (
     <div className={styles.container}>
@@ -60,7 +67,7 @@ const demagogueData = [ //temporary, replace with actual data, sort
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-       <AppBar position="static">
+       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Undemagogue 
@@ -95,12 +102,13 @@ const demagogueData = [ //temporary, replace with actual data, sort
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Hate Score
+                <TableCell style={{ top: 0, backgroundColor: 'white', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Name</TableCell>
+                <TableCell style={{ top: 0, backgroundColor: 'white', fontFamily: 'Arial, sans-serif', fontWeight: 'bold' }}>Hate Score
                   <Tooltip title="Hate score represents the level of hate or dislike towards a person or a topic.">
                         <span style={{ marginLeft: 5, cursor: 'pointer', fontSize: '12px', color: 'teal', borderRadius: '50%', padding: '2px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: '1px solid white' }}>?</span>
                       </Tooltip>
                 </TableCell>
+                
               </TableRow>
             </TableHead>
             <TableBody>

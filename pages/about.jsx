@@ -1,7 +1,7 @@
 // pages/about.js
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { Grid, GridItem, Typography, AppBar, Toolbar, Button, ImageList, ImageListItem } from '@mui/material';
+import { Typography, AppBar, Toolbar, Button } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link'
 
