@@ -1,7 +1,8 @@
 // pages/about.js
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { Typography, AppBar, Toolbar, Button } from '@mui/material';
+import { Grid, GridItem, Typography, AppBar, Toolbar, Button, ImageList, ImageListItem } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link'
 
 export default function About() {
@@ -32,6 +33,33 @@ export default function About() {
         <Typography variant="body1" component="p" style={{ marginTop: '20px' }}>
           We're Ilai and Yaron, two devs who are passionate about democracy. We want to help you with finding the people in your community who are hateful towards others, or are spreading fake news. Using LLMs, we rate the hate score of the people you follow, and suggest you unfollow those who have a track record of being hateful.
         </Typography>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+             <Image
+              src="/ilai.png"
+              width={450}
+              height={450}
+              alt="Picture of Ilai"
+              style={{ objectFit: 'cover',
+              marginLeft: '200px',
+              borderRadius: '5px',
+              border: '1px solid #fff',}}
+            />
+            <Image
+              src="/yaron.png"
+              width={450}
+              height={450}
+              alt="Picture of Yaron"
+              style={{
+              objectFit: 'cover',
+              marginRight: '200px',
+              borderRadius: '5px',
+              border: '1px solid #fff',
+            }}
+
+              
+            />
+            </div>
       </main>
     </div>
   );

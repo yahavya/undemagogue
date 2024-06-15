@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import React, { useState } from'react';
 import {TailSpin} from "react-loader-spinner";
-import { Table, Tooltip, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
+import { Box, Table, Tooltip, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography, AppBar, Toolbar, Input } from '@mui/material';
 import Link from 'next/link'
 export default function Home() {
 
@@ -72,12 +72,16 @@ const demagogueData = [ //temporary, replace with actual data, sort
         </Toolbar>
       </AppBar>
 
-      <main style={{position: 'elative', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <main style={{position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <Typography variant="h1" component="h1" className={styles.title}>Welcome to undemagogue</Typography>
 
         <form onSubmit={handleSubmit} style={{marginTop: '20px', justifyContent: 'center', alignItems: 'center'}}>
-          <Input type="text" id="twitterHandle" placeholder="Enter your twitter handle" />
-          <Button type="submit">Submit</Button>
+          
+          <Input type="text" id="twitterHandle" placeholder="Enter twitter handle" />
+          <Button type="submit" sx={{ backgroundColor: '#007bff', color: 'white', '&:hover': {
+    backgroundColor: '#0099ff', // Light blue color on hover
+  } }}>Submit</Button>
+          
         </form>
 
   
