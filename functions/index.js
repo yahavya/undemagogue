@@ -43,22 +43,15 @@ async function getChatGPTResponse(prompt) {
         "messages": [
           {
             "role": "user",
-            "content": "Who won the world series in 2020?"
-          },
-          {
-            "role": "assistant",
-            "content": "The Los Angeles Dodgers won the World Series in 2020."
-          },
-          {
-            "role": "user",
-            "content": "Where was it played?"
+            "content": prompt,
           }
+          
         ],
         "temperature": 1,
         "top_p": 1,
         "n": 1,
         "stream": false,
-        "max_tokens": 250,
+        "max_tokens": 2000,
         "presence_penalty": 0,
         "frequency_penalty": 0
       })
@@ -80,9 +73,11 @@ app.get("/api/getDemagogues", async (req, res) => {
     console.log(twitterHandle);
 
 
+    
+
     // Extract data from documents
     //const listings = "this is the first succesful response";
-    const data = await getChatGPTResponse("What's 5 * 9? why?");
+    const data = await getChatGPTResponse("give me a list of the top 20 demagogue populist accounts on twitter, and in the same list 20 most followed accounts on twitter, give each account a hate score between 0 and 100. return them in the following json format and nothing else:  'accounts': [ { 'username': '@twitterhandle', 'hate_score': number between 0 and 100 } , { 'username': '@twitterhandle', 'hate_score': number between 0 and 100]");
     res.json({ success: true, data: data });
   } catch (error) {
     console.error('Error fetching entries from Firestore:', error);

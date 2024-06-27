@@ -7,6 +7,7 @@ import Link from 'next/link'
 export default function Home() {
 
   const [data, setData] = useState([]);
+  const [accountsList, setAccountsList] = useState([]);
   const [showTable, setShowTable] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
@@ -32,7 +33,10 @@ export default function Home() {
         const { choices } = parsedData;
         const content = parsedData.choices[0].message.content; 
         setData(content); //not sure what data we should set here, revisit
-        console.log(choices[0].message);
+        //setAccountsList(JSON.parse(content).accounts);
+        setAccountsList(JSON.parse(choices[0].message.content).accounts)
+        console.log(JSON.parse(choices[0].message.content).accounts);
+        console.log("this is accounts list " +  accountsList);
         setShowTable(true);
         setLoading(false);
       })
@@ -41,8 +45,8 @@ export default function Home() {
        setLoading(false);
      });
   };
-
-  console.log("this is accessing data from outside: " + data);
+  
+  console.log("this is accessing data from outside: " + accountsList);
 
   const handleUnfollow = (url) => {
     window.open(url, '_blank');
@@ -112,11 +116,11 @@ const demagogueData = [ //temporary, replace with actual data, sort
               </TableRow>
             </TableHead>
             <TableBody>
-              {demagogueData.map((item, index) => (
+              {accountsList.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.username}</TableCell>
                   <TableCell>{item.hate_score}</TableCell>
-                  <TableCell><Button type="button" onClick={()=> handleUnfollow(item.url)}>Unfollow</Button></TableCell>
+                  <TableCell><Button type="button" onClick={()=> handleUnfollow(`https://x.com/${item.username}`)}>Unfollow</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

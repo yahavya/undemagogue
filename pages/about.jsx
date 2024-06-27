@@ -34,7 +34,7 @@ export default function About() {
           We're Ilai and Yaron, two devs who are passionate about democracy. We want to help you with finding the people in your community who are hateful towards others, or are spreading fake news. Using LLMs, we rate the hate score of the people you follow, and suggest you unfollow those who have a track record of being hateful.
         </Typography>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
              <Image
               src="/ilai.png"
               width={450}
@@ -59,7 +59,7 @@ export default function About() {
 
               
             />
-            </div>
+            </div> */}
       </main>
     </div>
   );
